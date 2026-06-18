@@ -108,6 +108,10 @@ textarea.invalid {
   display: block;
 }
 
+.error-message.hidden {
+  display: none;
+}
+
 fieldset {
   border: none;
 }
@@ -212,13 +216,17 @@ button:hover {
   position: fixed;
   top: 1.5rem;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -10px);
   background-color: var(--grey-900);
   color: var(--white);
   padding: 1rem 1.5rem;
   border-radius: 0.5rem;
   max-width: 90%;
   width: 25rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
 }
 
 .top-notification > div {
@@ -239,8 +247,11 @@ button:hover {
   color: var(--grey-500);
 }
 
-.top-notification[hidden] {
-  display: none;
+.top-notification.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0px);
 }
 
 @media (min-width: 42rem) {
